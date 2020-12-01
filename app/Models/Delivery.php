@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Delivery extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name', 'price'
+    ];
+
+    public function formatMoney(): string
+    {
+        return '$' . $this->price / 100;
+    }
 }

@@ -9,8 +9,17 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name', 'amount', 'size', 'price'
+    ];
+
     public function deliveries()
     {
         return $this->hasMany(Delivery::class);
+    }
+
+    public function formatMoney(): string
+    {
+        return '$' . $this->price / 100;
     }
 }
